@@ -1,1 +1,1 @@
-# example-handler-plugin
+# check-handler-plugin

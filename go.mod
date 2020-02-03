@@ -1,3 +1,3 @@
-module github.com/sensu-community/handler-plugin-template
+module github.com/sensu-community/check-plugin-template
 
 go 1.13
