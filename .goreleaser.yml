@@ -8,10 +8,7 @@ builds:
     binary: bin/{{ .ProjectName }}
     goos:
       - darwin
-      - freebsd
       - linux
-      - netbsd
-      - solaris
       - windows
     goarch:
       - amd64
@@ -24,9 +21,7 @@ builds:
       - 7
 
 checksum:
-  # You can change the name of the checksums file.
-  # Default is `{{ .ProjectName }}_{{ .Version }}_checksums.txt`.
-  name_template: "{{ .ProjectName }}_{{ .Version }}_sha256-checksums.txt"
+  name_template: "{{ .ProjectName }}_{{ .Version }}_sha512-checksums.txt"
   algorithm: sha512
 
 archives:
@@ -36,12 +31,3 @@ archives:
       - LICENSE
       - README.md
       - CHANGELOG.md
-
-  # You can change the name of the GitHub release.
-  # This is parsed with the Go template engine and the following variables
-  # are available:
-  # - ProjectName
-  # - Tag
-  # - Version (Git tag without `v` prefix)
-  # Default is ``
-  #name_template: "{{.ProjectName}}-v{{.Version}}"
