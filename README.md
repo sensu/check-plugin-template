@@ -17,21 +17,21 @@ To use this project as a template, click the "Use this template" button from the
 When writing or updating a plugin's README from this template, review the Sensu Community
 [plugin README style guide][3] for content suggestions and guidance.
 
-### Configuration
+## Configuration
 
-#### Asset registration
+### Asset registration
 
 Assets are the best way to make use of this plugin. If you're not using an asset, please consider
 doing so! If you're using sensuctl 5.13 with Sensu Backend 5.13 or later, you can use the following
 command to add the asset:
 
 ```
-sensuctl asset add {{ .GithubUser }}/{{ .GithubProject }}:VERSION`
+sensuctl asset add {{ .GithubUser }}/{{ .GithubProject }}
 ```
 
 If you're using an earlier version of sensuctl, you can find the asset on the [Bonsai Asset Index]([https://bonsai.sensu.io/assets/{{ .GithubUser }}/{{ .GithubProject }}](https://bonsai.sensu.io/assets/{{ .GithubUser }}/{{ .GithubProject }})).
 
-#### Resource definition
+### Resource definition
 
 ```yml
 ---
@@ -48,7 +48,7 @@ spec:
   - {{ .Name }}
 ```
 
-### Functionality
+## Functionality
 
 After successfully creating a project from this template, update the `checkOptions` struct in
 addition to the `executeCheck` and `checkArgs` functions in [main.go][7] to customize the behavior
