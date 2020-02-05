@@ -4,7 +4,6 @@
 - [Overview](#overview)
 - [Configuration](#configuration)
   - [Asset registration](#asset-registration)
-  - [Asset definition](#asset-definition)
   - [Resource definition](#resource-definition)
 - [Functionality](#functionality)
 - [Installation from source](#installation-from-source)
@@ -27,23 +26,10 @@ doing so! If you're using sensuctl 5.13 with Sensu Backend 5.13 or later, you ca
 command to add the asset:
 
 ```
-sensuctl asset add CHANGEME/{{ .Name }}:VERSION`
+sensuctl asset add {{ .GithubUser }}/{{ .GithubProject }}:VERSION`
 ```
 
-If you're using an earlier version of sensuctl, you can find the asset on the [Bonsai Asset Index]([https://bonsai.sensu.io/assets/CHANGEME/{{ .Name }}](https://bonsai.sensu.io/assets/CHANGEME/{{ .Name }})).
-
-#### Asset definition
-
-```yml
----
-type: Asset
-api_version: core/v2
-metadata:
-  namespace: default
-  name: {{ .Name }}
-spec:
-  "...": "..."
-```
+If you're using an earlier version of sensuctl, you can find the asset on the [Bonsai Asset Index]([https://bonsai.sensu.io/assets/{{ .GithubUser }}/{{ .GithubProject }}](https://bonsai.sensu.io/assets/{{ .GithubUser }}/{{ .GithubProject }})).
 
 #### Resource definition
 
@@ -52,10 +38,14 @@ spec:
 type: CheckConfig
 api_version: core/v2
 metadata:
-  namespace: default
   name: {{ .Name }}
+  namespace: default
 spec:
-  "...": "..."
+  command: {{ .Name }} --example example_arg
+  subscriptions:
+  - system
+  runtime_assets:
+  - {{ .Name }}
 ```
 
 ### Functionality
@@ -78,9 +68,10 @@ go build -o /usr/local/bin/{{ .Name }} main.go
 
 ## Additional notes
 
-To release a version of your project, simply tag the target sha. This will trigger the [GitHub action][5]
-workflow to [build and release][4] the plugin with goreleaser. Finalized releases can be found [here][6].
-Register the asset with [Bonsai][8] to share it with the community!
+To release a version of your project, simply tag the target sha with a semver release without a `v`
+prefix (ex. `1.0.0`). This will trigger the [GitHub action][5] workflow to [build and release][4]
+the plugin with goreleaser. Finalized releases can be found [here][6]. Register the asset with
+[Bonsai][8] to share it with the community!
 
 ## Contributing
 
