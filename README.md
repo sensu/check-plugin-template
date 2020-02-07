@@ -38,14 +38,14 @@ If you're using an earlier version of sensuctl, you can find the asset on the [B
 type: CheckConfig
 api_version: core/v2
 metadata:
-  name: {{ .Name }}
+  name: {{ .GithubProject }}
   namespace: default
 spec:
-  command: {{ .Name }} --example example_arg
+  command: {{ .GithubProject }} --example example_arg
   subscriptions:
   - system
   runtime_assets:
-  - {{ .Name }}
+  - {{ .GithubProject }}
 ```
 
 ## Functionality
@@ -60,10 +60,10 @@ The preferred way of installing and deploying this plugin is to use it as an Ass
 like to compile and install the plugin from source or contribute to it, download the latest version
 or create an executable script from this source.
 
-From the local path of the {{ .Name }} repository:
+From the local path of the {{ .GithubProject }} repository:
 
 ```
-go build -o /usr/local/bin/{{ .Name }} main.go
+go build -o /usr/local/bin/{{ .GithubProject }} main.go
 ```
 
 ## Additional notes
