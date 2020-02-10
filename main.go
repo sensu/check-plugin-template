@@ -8,19 +8,14 @@ import (
 	"github.com/sensu/sensu-go/types"
 )
 
-// Plugin ...
-type Plugin struct {
+// Config represents the check plugin config.
+type Config struct {
 	sensu.PluginConfig
 	Example string
 }
 
-// Options ...
-type Options struct {
-	Example sensu.PluginConfigOption
-}
-
 var (
-	plugin = Plugin{
+	plugin = Config{
 		PluginConfig: sensu.PluginConfig{
 			Name:     "{{ .GithubProject }}",
 			Short:    "{{ .Description }}",
@@ -28,20 +23,16 @@ var (
 		},
 	}
 
-	checkOptions = Options{
-		Example: sensu.PluginConfigOption{
+	options := []*sensu.PluginConfigOption{
+		&sensu.PluginConfigOption{
 			Path:      "example",
 			Env:       "CHECK_EXAMPLE",
 			Argument:  "example",
 			Shorthand: "e",
 			Default:   "",
-			Usage:     "An example configuration option",
+			Usage:     "An example string configuration option",
 			Value:     &plugin.Example,
 		},
-	}
-
-	options = []*sensu.PluginConfigOption{
-		&checkOptions.Example,
 	}
 )
 
