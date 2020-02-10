@@ -24,7 +24,6 @@ var (
 		PluginConfig: sensu.PluginConfig{
 			Name:     "{{ .GithubProject }}",
 			Short:    "{{ .Description }}",
-			Timeout:  10,
 			Keyspace: "sensu.io/plugins/{{ .GithubProject }}/config",
 		},
 	}
@@ -53,12 +52,12 @@ func main() {
 
 func checkArgs(event *types.Event) (int, error) {
 	if len(plugin.Example) == 0 {
-		return 0, fmt.Errorf("--example or CHECK_EXAMPLE environment variable is required")
+		return sensu.CheckStateWarning, fmt.Errorf("--example or CHECK_EXAMPLE environment variable is required")
 	}
-	return 0, nil
+	return sensu.CheckStateOK, nil
 }
 
 func executeCheck(event *types.Event) (int, error) {
 	log.Println("executing check with --example", checkOptions.Example)
-	return 0, nil
+	return sensu.CheckStateOK, nil
 }
