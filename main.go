@@ -23,7 +23,7 @@ var (
 		},
 	}
 
-	options := []*sensu.PluginConfigOption{
+	options = []*sensu.PluginConfigOption{
 		&sensu.PluginConfigOption{
 			Path:      "example",
 			Env:       "CHECK_EXAMPLE",
@@ -49,6 +49,6 @@ func checkArgs(event *types.Event) (int, error) {
 }
 
 func executeCheck(event *types.Event) (int, error) {
-	log.Println("executing check with --example", checkOptions.Example)
+	log.Println("executing check with --example", plugin.Example)
 	return sensu.CheckStateOK, nil
 }
