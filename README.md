@@ -39,7 +39,7 @@ the plugin with goreleaser. Register the asset with [Bonsai][8] to share it with
 - [Usage examples](#usage-examples)
 - [Configuration](#configuration)
   - [Asset registration](#asset-registration)
-  - [Resource definition](#resource-definition)
+  - [Check definition](#check-definition)
 - [Installation from source](#installation-from-source)
 - [Additional notes](#additional-notes)
 - [Contributing](#contributing)
@@ -66,7 +66,7 @@ sensuctl asset add {{ .GithubUser }}/{{ .GithubProject }}
 
 If you're using an earlier version of sensuctl, you can find the asset on the [Bonsai Asset Index][https://bonsai.sensu.io/assets/{{ .GithubUser }}/{{ .GithubProject }}].
 
-### Resource definition
+### Check definition
 
 ```yml
 ---
@@ -80,7 +80,7 @@ spec:
   subscriptions:
   - system
   runtime_assets:
-  - {{ .GithubProject }}
+  - {{ .GithubUser }}/{{ .GithubProject }}
 ```
 
 ## Installation from source
