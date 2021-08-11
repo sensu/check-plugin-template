@@ -2,10 +2,10 @@ package main
 
 import (
 	"fmt"
-	"log"
-
 	"github.com/sensu-community/sensu-plugin-sdk/sensu"
 	"github.com/sensu/sensu-go/api/core/v2"
+	"log"
+	"os"
 )
 
 // Config represents the check plugin config.
