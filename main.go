@@ -5,8 +5,8 @@ import (
 	"log"
 	"os"
 
+	corev2 "github.com/sensu/sensu-go/api/core/v2"
 	"github.com/sensu/sensu-plugin-sdk/sensu"
-	"github.com/sensu/sensu-go/types"
 )
 
 // Config represents the check plugin config.
@@ -24,8 +24,8 @@ var (
 		},
 	}
 
-	options = []*sensu.PluginConfigOption{
-		&sensu.PluginConfigOption{
+	options = []sensu.ConfigOption{
+		&sensu.PluginConfigOption[string]{
 			Path:      "example",
 			Env:       "CHECK_EXAMPLE",
 			Argument:  "example",
@@ -54,14 +54,14 @@ func main() {
 	check.Execute()
 }
 
-func checkArgs(event *types.Event) (int, error) {
+func checkArgs(event *corev2.Event) (int, error) {
 	if len(plugin.Example) == 0 {
 		return sensu.CheckStateWarning, fmt.Errorf("--example or CHECK_EXAMPLE environment variable is required")
 	}
 	return sensu.CheckStateOK, nil
 }
 
-func executeCheck(event *types.Event) (int, error) {
+func executeCheck(event *corev2.Event) (int, error) {
 	log.Println("executing check with --example", plugin.Example)
 	return sensu.CheckStateOK, nil
 }
