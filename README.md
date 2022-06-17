@@ -1,4 +1,4 @@
-{{- /* Ignore this text, until templating is ran via [sensu-plugin-tool](https://github.com/sensu-community/sensu-plugin-tool) the below badge links wiill not render */ -}}
+{{- /* Ignore this text, until templating is ran via [sensu-plugin-tool](https://github.com/sensu/sensu-plugin-tool) the below badge links wiill not render */ -}}
 
 [![Sensu Bonsai Asset](https://img.shields.io/badge/Bonsai-Download%20Me-brightgreen.svg?colorB=89C967&logo=sensu)](https://bonsai.sensu.io/assets/{{ .GithubUser }}/{{ .GithubProject }})
 ![Go Test](https://github.com/{{ .GithubUser }}/{{ .GithubProject }}/workflows/Go%20Test/badge.svg)
@@ -109,5 +109,5 @@ For more information about contributing to this plugin, see [Contributing][1].
 [6]: https://docs.sensu.io/sensu-go/latest/reference/checks/
 [7]: https://github.com/sensu/check-plugin-template/blob/master/main.go
 [8]: https://bonsai.sensu.io/
-[9]: https://github.com/sensu-community/sensu-plugin-tool
+[9]: https://github.com/sensu/sensu-plugin-tool
 [10]: https://docs.sensu.io/sensu-go/latest/reference/assets/
